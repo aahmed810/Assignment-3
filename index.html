@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Assignment-3</title>
+</head>
+<script>
+var i = 0;
+var images = [];
+var time = 3000;
+
+// Image List
+images[0] = "images/banner1.gif";
+images[1] = "images/banner2.gif";
+images[2] = "images/banner3.gif";
+images[3] = "images/banner4.gif";
+
+// Change Image
+
+function changeImg() {
+    document.slide.src = images[i];
+
+    if (i < images.length - 1) {
+        i++;
+    }
+    else {
+        i = 0;
+    }
+    setTimeout("changeImg()", time);
+}
+window.onload = changeImg;
+
+
+window.onload = swapBanners;
+
+function largeImage(currentImage) {
+    var PHImage = document.getElementById("placeHolder");
+
+
+    if (currentImage.src.indexOf("images/FrenchQuarter_small.jpg") != -1) {
+        PHImage.src = "images/FrenchQuarter.jpg";
+        document.getElementById("myspan").innerHTML = "French Quarter";
+    }
+
+    else if (currentImage.src.indexOf("images/GoldenGateBridge_small.jpg") != -1) {
+        PHImage.src = "images/GoldenGateBridge.jpg";
+        document.getElementById("myspan").innerHTML = "Golden Gate Bridge";
+    }
+
+    else if (currentImage.src.indexOf("images/NazarethBay_small.jpg") != -1) {
+        PHImage.src = "images/NazarethBay.jpg";
+        document.getElementById("myspan").innerHTML = "Nazareth Bay";
+    }
+
+    else {
+        PHImage.src = "images/The Alamo.jpg";
+        document.getElementById("myspan").innerHTML = "The Alamo";
+    }
+
+}
+
+function blankImage() {
+    var PHImage = document.getElementById("placeHolder");
+    PHImage.src = "images/Placeholder.jpg";
+    document.getElementById("myspan").innerHTML = "Move your mouse over one of the icons to see an enlarged image";
+}
+</script>
+<body>
+    <img name="slide" src="" height="100px" width="500px" />
+
+    <br />
+
+    <img src="images/FrenchQuarter_small.jpg" width="100px" height="100px" onmouseover="largeImage(this)"
+        onmouseout="blankImage()" />
+
+    <img src="images/GoldenGateBridge_small.jpg" width="100px" height="100px" onmouseover="largeImage(this)"
+        onmouseout="blankImage()" />
+
+    <img src="images/NazarethBay_small.jpg" width="100px" height="100px" onmouseover="largeImage(this)"
+        onmouseout="blankImage()" />
+
+    <img src="images/TheAlamo_small.jpg" width="100px" height="100px" onmouseover="largeImage(this)"
+        onmouseout="blankImage()" />
+
+    <br />
+    <img src="images/Placeholder.jpg" width="400px" height="400px" id="placeHolder" />
+    
+    <span id="myspan"></span>
+
+</body>
+</html>
